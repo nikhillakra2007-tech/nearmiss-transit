@@ -6,9 +6,9 @@
 
 <br/>
 
-[![Live Production](https://img.shields.io/badge/🚀_LIVE_PRODUCTION-wcc--tawny.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://wcc-tawny.vercel.app)
-[![Surveillance Workspace](https://img.shields.io/badge/🛰️_SURVEILLANCE_WORKSPACE-Open_Dashboard-10b981?style=for-the-badge&logo=google-cloud&logoColor=white)](https://wcc-tawny.vercel.app/workspace)
-[![API Documentation](https://img.shields.io/badge/📑_API_DOCS-Swagger_OpenAPI-0284c7?style=for-the-badge&logo=fastapi&logoColor=white)](https://wcc-tawny.vercel.app/docs)
+[![Live Production](https://img.shields.io/badge/🚀_LIVE_PRODUCTION-nearmiss--transit.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://nearmiss-transit.vercel.app)
+[![Surveillance Workspace](https://img.shields.io/badge/🛰️_SURVEILLANCE_WORKSPACE-Open_Dashboard-10b981?style=for-the-badge&logo=google-cloud&logoColor=white)](https://nearmiss-transit.vercel.app/workspace)
+[![API Documentation](https://img.shields.io/badge/📑_API_DOCS-Swagger_OpenAPI-0284c7?style=for-the-badge&logo=fastapi&logoColor=white)](https://nearmiss-transit.vercel.app/docs)
 
 <br/>
 
@@ -18,12 +18,12 @@
 [![Styling](https://img.shields.io/badge/Styling-Custom_CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](./frontend/css)
 [![Database](https://img.shields.io/badge/Database-SQLAlchemy_2.0-D71F00?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlalchemy.org/)
 [![Telemetry](https://img.shields.io/badge/Telemetry-GTFS--Realtime-F58220?style=for-the-badge&logo=google-maps&logoColor=white)](https://gtfs.org/realtime/)
-[![Deployment](https://img.shields.io/badge/Deployment-Vercel_Edge-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://wcc-tawny.vercel.app)
+[![Deployment](https://img.shields.io/badge/Deployment-nearmiss--transit.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://nearmiss-transit.vercel.app)
 [![Architecture](https://img.shields.io/badge/Architecture-Decoupled_1--2_Files-8B5CF6?style=for-the-badge&logo=blueprint&logoColor=white)](./frontend/components)
 
 <br/>
 
-[🌐 **Live Landing Page**](https://wcc-tawny.vercel.app) • [🛰️ **Surveillance Workspace**](https://wcc-tawny.vercel.app/workspace) • [📖 **Interactive API Docs**](https://wcc-tawny.vercel.app/docs) • [📁 **Frontend Components**](./frontend/components)
+[🌐 **Live Landing Page**](https://nearmiss-transit.vercel.app) • [🛰️ **Surveillance Workspace**](https://nearmiss-transit.vercel.app/workspace) • [📖 **Interactive API Docs**](https://nearmiss-transit.vercel.app/docs) • [📁 **Frontend Components**](./frontend/components)
 
 </div>
 
@@ -33,10 +33,10 @@
 
 | Environment | Service | Live URL | Status |
 |---|---|---|---|
-| **Production** | 🌐 Public Landing Page | [https://wcc-tawny.vercel.app](https://wcc-tawny.vercel.app) | ![Active](https://img.shields.io/badge/ONLINE-brightgreen?style=flat-square) |
-| **Operations** | 🛰️ Surveillance Workspace | [https://wcc-tawny.vercel.app/workspace](https://wcc-tawny.vercel.app/workspace) | ![Active](https://img.shields.io/badge/ONLINE-brightgreen?style=flat-square) |
-| **API Reference** | 📑 Interactive Swagger UI | [https://wcc-tawny.vercel.app/docs](https://wcc-tawny.vercel.app/docs) | ![Active](https://img.shields.io/badge/ONLINE-brightgreen?style=flat-square) |
-| **API Health** | 🩺 Telemetry & DB Health | [https://wcc-tawny.vercel.app/api/v1/health](https://wcc-tawny.vercel.app/api/v1/health) | ![Active](https://img.shields.io/badge/200_OK-brightgreen?style=flat-square) |
+| **Production** | 🌐 Public Landing Page | [https://nearmiss-transit.vercel.app](https://nearmiss-transit.vercel.app) | ![Active](https://img.shields.io/badge/ONLINE-brightgreen?style=flat-square) |
+| **Operations** | 🛰️ Surveillance Workspace | [https://nearmiss-transit.vercel.app/workspace](https://nearmiss-transit.vercel.app/workspace) | ![Active](https://img.shields.io/badge/ONLINE-brightgreen?style=flat-square) |
+| **API Reference** | 📑 Interactive Swagger UI | [https://nearmiss-transit.vercel.app/docs](https://nearmiss-transit.vercel.app/docs) | ![Active](https://img.shields.io/badge/ONLINE-brightgreen?style=flat-square) |
+| **API Health** | 🩺 Telemetry & DB Health | [https://nearmiss-transit.vercel.app/api/v1/health](https://nearmiss-transit.vercel.app/api/v1/health) | ![Active](https://img.shields.io/badge/200_OK-brightgreen?style=flat-square) |
 | **Ingestion Engine**| ⚡ Live / Replay Cycle Trigger | `POST /api/v1/ingestion/run` | ![Active](https://img.shields.io/badge/READY-brightgreen?style=flat-square) |
 
 ---
@@ -200,7 +200,7 @@ npm i -g vercel
 vercel --prod
 ```
 
-**Live Production Link:** [https://wcc-tawny.vercel.app](https://wcc-tawny.vercel.app)
+**Live Production Link:** [https://nearmiss-transit.vercel.app](https://nearmiss-transit.vercel.app)
 
 ---
 
