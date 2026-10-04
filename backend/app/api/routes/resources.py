@@ -32,7 +32,9 @@ def _repo_router(prefix: str, repo_cls, not_found: str, filters: tuple = ()):
     @r.get(prefix)
     def list_items(limit: int = 50, offset: int = 0, db: Session = Depends(get_db)):
         q = db.query(repo_cls.model)
-        if hasattr(repo_cls.model, "created_at"):
+        if hasattr(repo_cls.model, "observed_at"):
+            q = q.order_by(repo_cls.model.observed_at.desc())
+        elif hasattr(repo_cls.model, "created_at"):
             q = q.order_by(repo_cls.model.created_at.desc())
         return [serialize(o) for o in q.offset(offset).limit(min(max(limit, 1), 200)).all()]
 

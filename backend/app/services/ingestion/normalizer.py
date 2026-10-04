@@ -36,6 +36,8 @@ def normalize(entity: dict, agency_external_id: str, scheduled_lookup=None) -> N
                 break
     if delay is None and entity.get("delay_seconds") is not None:
         delay = int(entity["delay_seconds"])
+    elif delay is None and entity.get("delay") is not None:
+        delay = int(entity["delay"])
     scheduled = None
     if scheduled_lookup and delay is not None:
         scheduled = scheduled_lookup(entity)

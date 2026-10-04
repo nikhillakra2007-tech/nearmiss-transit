@@ -42,7 +42,13 @@ def candidate_pairs(db: Session, agency_id: str, since=None, until=None,
     window = window_minutes if window_minutes is not None else settings.CHAIN_WINDOW_MINUTES
     q = db.query(NearMiss).filter_by(agency_id=agency_id).filter(NearMiss.status != "DISMISSED")
     nms = q.all()
-    starts = {n.id: _start_time(db, n) for n in nms}
+    start_ids = [n.start_event_id for n in nms if n.start_event_id]
+    if start_ids:
+        events = db.query(TransitEvent.id, TransitEvent.observed_at).filter(TransitEvent.id.in_(start_ids)).all()
+        ev_map = dict(events)
+    else:
+        ev_map = {}
+    starts = {n.id: ev_map.get(n.start_event_id) for n in nms}
     nms = [n for n in nms if starts[n.id] is not None]
     def _norm(dt):
         return dt.replace(tzinfo=None) if getattr(dt, "tzinfo", None) else dt
@@ -63,7 +69,7 @@ def candidate_pairs(db: Session, agency_id: str, since=None, until=None,
                 break  # sorted: later b only wider
             if a.vehicle_id and a.vehicle_id == b.vehicle_id:
                 continue
-            pairs.append({"a": a, "b": b, "gap_minutes": round(gap, 1)})
+            pairs.append({"a": a, "b": b, "a_at": starts[a.id], "b_at": starts[b.id], "gap_minutes": round(gap, 1)})
     return pairs
 
 
@@ -111,8 +117,8 @@ def detect_chains(db: Session, agency_id: str, since=None, until=None,
             "occurrences": len(occs),
             "avg_gap_minutes": round(sum(gaps) / len(gaps), 1),
             "pairs": [{"a_id": o["a"].id, "b_id": o["b"].id,
-                       "a_at": _start_time(db, o["a"]).isoformat(),
-                       "b_at": _start_time(db, o["b"]).isoformat(),
+                       "a_at": (o.get("a_at") or _start_time(db, o["a"])).isoformat(),
+                       "b_at": (o.get("b_at") or _start_time(db, o["b"])).isoformat(),
                        "gap_minutes": o["gap_minutes"]} for o in occs],
         })
     chains.sort(key=lambda c: (-c["occurrences"], c["avg_gap_minutes"]))

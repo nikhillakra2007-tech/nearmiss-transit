@@ -62,6 +62,7 @@ class InterventionIn(BaseModel):
 class IngestIn(BaseModel):
     agency_external_id: str = "demo-agency"
     demo_rows: list[dict] | None = None
+    simulate_cycle: bool = False
 
 
 @app.post(f"{settings.API_V1_PREFIX}/investigations")
@@ -89,8 +90,20 @@ async def run_ingestion(body: IngestIn):
     """Manual single ingestion cycle. Demo/replay rows accepted; live fetch otherwise."""
     db: Session = next(get_db())
     try:
-        if body.demo_rows is not None or settings.DEMO_MODE or not settings.GTFS_REALTIME_URL:
+        if body.demo_rows is not None and not body.simulate_cycle:
             rows = parse_fixture_dicts(body.demo_rows or [])
+            mode = "DEMO/REPLAY"
+        elif body.simulate_cycle or settings.DEMO_MODE or not settings.GTFS_REALTIME_URL:
+            now_ts = int(datetime.now(timezone.utc).timestamp())
+            sample_rows = [
+                {"route_id": "42", "vehicle_id": f"V42-{now_ts % 1000}", "trip_id": f"T42-{now_ts}", "delay": 120, "kind": "trip_update", "timestamp": now_ts},
+                {"route_id": "Green-E", "vehicle_id": f"VGLE-{now_ts % 1000}", "trip_id": f"TGLE-{now_ts}", "delay": 85, "kind": "trip_update", "timestamp": now_ts},
+                {"route_id": "39", "vehicle_id": f"V39-{now_ts % 1000}", "trip_id": f"T39-{now_ts}", "delay": 95, "kind": "trip_update", "timestamp": now_ts},
+                {"route_id": "1", "vehicle_id": f"V1-{now_ts % 1000}", "trip_id": f"T1-{now_ts}", "delay": 110, "kind": "trip_update", "timestamp": now_ts},
+                {"route_id": "66", "vehicle_id": f"V66-{now_ts % 1000}", "trip_id": f"T66-{now_ts}", "delay": 70, "kind": "trip_update", "timestamp": now_ts},
+                {"route_id": "Red", "vehicle_id": f"VRL-{now_ts % 1000}", "trip_id": f"TRL-{now_ts}", "delay": 60, "kind": "trip_update", "timestamp": now_ts},
+            ]
+            rows = parse_fixture_dicts(sample_rows)
             mode = "DEMO/REPLAY"
         else:
             raw = await fetch_feed()
@@ -126,3 +139,29 @@ def styles_css():
     from pathlib import Path
     from fastapi.responses import FileResponse
     return FileResponse(Path(__file__).resolve().parents[2] / "frontend" / "styles.css")
+
+
+@app.get("/workspace")
+def workspace():
+    from pathlib import Path
+    from fastapi.responses import FileResponse
+    return FileResponse(Path(__file__).resolve().parents[2] / "frontend" / "workspace.html")
+
+
+from pathlib import Path
+from fastapi.staticfiles import StaticFiles
+
+_frontend_dir = Path(__file__).resolve().parents[2] / "frontend"
+
+_components_dir = _frontend_dir / "components"
+if _components_dir.exists():
+    app.mount("/components", StaticFiles(directory=str(_components_dir)), name="components")
+
+_css_dir = _frontend_dir / "css"
+if _css_dir.exists():
+    app.mount("/css", StaticFiles(directory=str(_css_dir)), name="css")
+
+_assets_dir = _frontend_dir / "assets"
+if _assets_dir.exists():
+    app.mount("/assets", StaticFiles(directory=str(_assets_dir)), name="assets")
+

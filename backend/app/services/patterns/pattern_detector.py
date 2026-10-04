@@ -37,10 +37,14 @@ def detect_patterns(db: Session, min_occurrences: int | None = None) -> list[Pat
             created.append(existing)
             continue
         route_id = members[0].route_id
+        from backend.app.db.models.route import Route
+        route_obj = db.query(Route).filter_by(id=route_id).first() if route_id else None
+        rname = (route_obj.short_name or route_obj.long_name or route_obj.external_route_id) if route_obj else "Corridor"
+        corridor_display = rname if rname.lower().startswith(("route", "line", "green", "red", "orange", "blue")) else f"Route {rname}"
         p = Pattern(agency_id=members[0].agency_id, route_id=route_id,
                     pattern_type="RECURRING_DELAY_INSTABILITY",
-                    title=f"Recurring delay instability ({len(members)}x) key={key}",
-                    description=f"{len(members)} near-misses share route/time/type bucket {key}.",
+                    title=f"{corridor_display}: Recurring delay instability ({len(members)}x)",
+                    description=f"{len(members)} operational near-misses share recurring delay spike and recovery profiles on {corridor_display}.",
                     recurrence_count=len(members), first_seen_at=members[0].detected_at,
                     last_seen_at=members[-1].detected_at, severity="HIGH",
                     confidence_score=min(0.5 + 0.1 * len(members), 0.95), status="OPEN",

@@ -56,6 +56,15 @@ def _route_events_upto(db: Session, agency_id: str, route_id: str, at) -> list:
             .order_by(TransitEvent.observed_at.asc()).limit(2000).all())
 
 
+_FP_CACHE: dict[str, dict] = {}
+
+
+def _cached_fp(db: Session, pid: str) -> dict:
+    if pid not in _FP_CACHE:
+        _FP_CACHE[pid] = fingerprint_for(db, pid)
+    return _FP_CACHE[pid]
+
+
 def _sig(name: str, value: float | None, summary: str, evidence: list) -> dict:
     return {"name": name, "available": value is not None,
             "value": round(value, 1) if value is not None else None,
@@ -113,13 +122,12 @@ def forecast_pattern(db: Session, pattern_id: str, at=None) -> dict:
         others = [p for p in db.query(Pattern).all()
                   if p.id != pattern_id and p.first_seen_at and _naive(p.first_seen_at) <= _naive(at)]
         if others:
-            base = fingerprint_for(db, pattern_id)
+            base = _cached_fp(db, pattern_id)
             from backend.app.services.fingerprints.engine import similarity
-            from backend.app.services.fingerprints.engine import fingerprint_for as _fp
             best, matched = 0.0, []
-            for p in others:
+            for p in others[:5]:
                 try:
-                    s, m = similarity(base, _fp(db, p.id))
+                    s, m = similarity(base, _cached_fp(db, p.id))
                 except EntityNotFoundError:
                     continue
                 if s > best:

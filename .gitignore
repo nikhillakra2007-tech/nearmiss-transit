@@ -11,3 +11,4 @@ alembic/__pycache__/
 dist/
 build/
 *.egg-info/
+node_modules/
