@@ -14,6 +14,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--warn);outline-offse
 .story{text-align:center;color:var(--dim);letter-spacing:.15em;font-size:.8rem;margin:.6rem 0 0}
 main{max-width:72rem;margin:0 auto;padding:1rem 1.25rem;display:grid;gap:1.5rem}
 section{background:var(--panel);border:1px solid var(--line);border-radius:.6rem;padding:1rem 1.25rem}
+section[hidden],main>section[hidden]{display:none !important}
 .cards{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fill,minmax(17rem,1fr))}
 .card{border:1px solid var(--line);border-radius:.5rem;padding:.75rem;background:#0d1117}
 .card h3{margin:.2rem 0}.empty{color:var(--dim)}

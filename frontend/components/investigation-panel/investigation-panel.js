@@ -555,9 +555,14 @@ async function openPattern(id) {
       <p class="fineprint">Historical replay using observed data up to each cutoff. Not a claim of future prediction accuracy.</p>
       <div data-replay><p class="empty">Loading historical replay…</p></div>${labHTML}${invs}`;
     d.querySelector("[data-back]").addEventListener("click", () => {
-      $("h-patterns").scrollIntoView();
-      $("h-patterns").setAttribute("tabindex", "-1");
-      $("h-patterns").focus({ preventScroll: true });
+      if (typeof window.switchSection === "function") {
+        window.switchSection("patterns");
+      }
+      const hp = $("h-patterns");
+      if (hp) {
+        hp.setAttribute("tabindex", "-1");
+        hp.focus({ preventScroll: true });
+      }
     });
     try {
       const rp = await jget(`/patterns/${id}/early-warning`);
@@ -646,9 +651,14 @@ async function openPattern(id) {
     );
     d.querySelectorAll("[data-open-pattern]").forEach((b) =>
       b.addEventListener("click", () => {
+        if (typeof window.switchSection === "function") {
+          window.switchSection("detail");
+        }
         openPattern(b.dataset.openPattern);
-        $("h-detail").focus({ preventScroll: true });
-        $("h-detail").scrollIntoView();
+        const h = $("h-detail");
+        if (h) {
+          h.focus({ preventScroll: true });
+        }
       })
     );
     d.querySelectorAll("[data-lab]").forEach((f) =>

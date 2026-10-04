@@ -2,11 +2,13 @@
 
 async function initWorkspace() {
   const handleOpenPattern = (patternId) => {
+    if (typeof window.switchSection === "function") {
+      window.switchSection("detail");
+    }
     openPattern(patternId);
     const h = $("h-detail");
     if (h) {
       h.focus({ preventScroll: true });
-      h.scrollIntoView();
     }
   };
 

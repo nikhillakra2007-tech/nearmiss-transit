@@ -24,41 +24,44 @@
     <button id="ingest-btn" type="button">Run ingestion cycle</button>
   </div>
 </header>
-<nav class="pagenav" aria-label="Sections">
-  <a href="#h-nearmisses">Near-misses</a>
-  <a href="#h-resilience">Resilience</a>
-  <a href="#h-forecast">Emerging</a>
-  <a href="#h-patterns">Patterns</a>
-  <a href="#h-detail">Investigation</a>
-  <a href="#h-ops">Operations</a>
+<nav class="pagenav" role="tablist" aria-label="Workspace Sections">
+  <a role="tab" id="tab-nearmisses" href="#nearmisses" aria-controls="section-nearmisses" aria-selected="true" class="active">Near-misses</a>
+  <a role="tab" id="tab-delays" href="#delays" aria-controls="section-delays" aria-selected="false">Time Delays</a>
+  <a role="tab" id="tab-patterns" href="#patterns" aria-controls="section-patterns" aria-selected="false">Patterns</a>
+  <a role="tab" id="tab-detail" href="#detail" aria-controls="section-detail" aria-selected="false">Investigation</a>
+  <a role="tab" id="tab-forecast" href="#forecast" aria-controls="section-forecast" aria-selected="false">Emerging</a>
+  <a role="tab" id="tab-resilience" href="#resilience" aria-controls="section-resilience" aria-selected="false">Resilience</a>
 </nav>
 <p class="story" aria-label="How to read this dashboard">DETECT → REMEMBER → CONNECT → FORECAST → EARLY-WARNING REPLAY → SIMULATE → RECOMMEND → VERIFY</p>
 <main id="main">
-  <section aria-labelledby="h-nearmisses">
+  <section id="section-nearmisses" data-section="nearmisses" aria-labelledby="h-nearmisses">
     <h2 id="h-nearmisses" tabindex="-1">Active near-misses</h2>
+    <p class="fineprint">Live-detected transit service deviations, peak escalations, and successful recoveries across monitored corridors.</p>
     <div id="nearmisses" class="cards"><p class="empty">Loading near-misses…</p></div>
   </section>
-  <section aria-labelledby="h-resilience">
-    <h2 id="h-resilience" tabindex="-1">Operational resilience radar</h2>
-    <p class="fineprint">Composite historical indicator derived from observed operational behavior. Lower values indicate more recurring operational stress in the observed period. Not a safety or failure prediction.</p>
-    <div id="resilience" class="cards"><p class="empty">Loading resilience…</p></div>
+  <section id="section-delays" data-section="delays" aria-labelledby="h-ops" hidden>
+    <h2 id="h-ops" tabindex="-1">Time Delays & Live Transit State</h2>
+    <p class="fineprint">Real-time GTFS delay telemetry, route events, and observed vehicle delay metrics.</p>
+    <div id="ops"><p class="empty">Loading operations…</p></div>
   </section>
-  <section aria-labelledby="h-forecast">
+  <section id="section-patterns" data-section="patterns" aria-labelledby="h-patterns" hidden>
+    <h2 id="h-patterns" tabindex="-1">Recurring near-misses</h2>
+    <p class="fineprint">Deterministic operational fingerprints and recurring delay cascades identified across multiple routes.</p>
+    <div id="patterns" class="cards"><p class="empty">Loading patterns…</p></div>
+  </section>
+  <section id="section-detail" data-section="detail" aria-labelledby="h-detail" hidden>
+    <h2 id="h-detail" tabindex="-1">Investigation</h2>
+    <div id="detail"><p class="empty">Select a pattern above to open its evidence, agent findings, recommendation, and verification.</p></div>
+  </section>
+  <section id="section-forecast" data-section="forecast" aria-labelledby="h-forecast" hidden>
     <h2 id="h-forecast" tabindex="-1">Emerging near-miss signals</h2>
     <p class="fineprint">Operational early-warning signals, not guaranteed predictions. Current behavior resembling historical near-miss conditions.</p>
     <div id="forecast" class="cards"><p class="empty">Loading forecast…</p></div>
   </section>
-  <section aria-labelledby="h-patterns">
-    <h2 id="h-patterns">Recurring near-misses</h2>
-    <div id="patterns" class="cards"><p class="empty">Loading patterns…</p></div>
-  </section>
-  <section aria-labelledby="h-detail">
-    <h2 id="h-detail" tabindex="-1">Investigation</h2>
-    <div id="detail"><p class="empty">Select a pattern above to open its evidence, agent findings, recommendation, and verification.</p></div>
-  </section>
-  <section aria-labelledby="h-ops">
-    <h2 id="h-ops">Live transit state</h2>
-    <div id="ops"><p class="empty">Loading operations…</p></div>
+  <section id="section-resilience" data-section="resilience" aria-labelledby="h-resilience" hidden>
+    <h2 id="h-resilience" tabindex="-1">Operational resilience radar</h2>
+    <p class="fineprint">Composite historical indicator derived from observed operational behavior. Lower values indicate more recurring operational stress in the observed period. Not a safety or failure prediction.</p>
+    <div id="resilience" class="cards"><p class="empty">Loading resilience…</p></div>
   </section>
 </main>
 <footer><p>Operational near-misses only. Hypotheses are labelled as hypotheses. Replay data is always labelled REPLAY.</p></footer>
