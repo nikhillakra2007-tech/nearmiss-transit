@@ -1,12 +1,43 @@
+<div align="center">
+
 # 🚊 NearMiss Transit — Operational Pre-Disruption Intelligence
 
-> **See the recurring signals between normal service and system failure — before the next disruption occurs.**
+### *See the recurring signals between normal service and system failure — before the next disruption occurs.*
 
-[![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688.svg?style=flat&logo=fastapi)](https://fastapi.tiangolo.com)
-[![Python](https://img.shields.io/badge/Python-3.11+-3776AB.svg?style=flat&logo=python)](https://python.org)
-[![Vercel](https://img.shields.io/badge/Deploy-Vercel-black.svg?style=flat&logo=vercel)](https://vercel.com)
-[![Architecture](https://img.shields.io/badge/Frontend-Decoupled%20Modular-blue.svg)](./frontend/components)
-[![GTFS-RT](https://img.shields.io/badge/Telemetry-GTFS--Realtime-orange.svg)](https://gtfs.org/realtime/)
+<br/>
+
+[![Live Production](https://img.shields.io/badge/🚀_LIVE_PRODUCTION-wcc--tawny.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://wcc-tawny.vercel.app)
+[![Surveillance Workspace](https://img.shields.io/badge/🛰️_SURVEILLANCE_WORKSPACE-Open_Dashboard-10b981?style=for-the-badge&logo=google-cloud&logoColor=white)](https://wcc-tawny.vercel.app/workspace)
+[![API Documentation](https://img.shields.io/badge/📑_API_DOCS-Swagger_OpenAPI-0284c7?style=for-the-badge&logo=fastapi&logoColor=white)](https://wcc-tawny.vercel.app/docs)
+
+<br/>
+
+[![Backend](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Frontend](https://img.shields.io/badge/Frontend-Modular_ES6+-f7df1e?style=for-the-badge&logo=javascript&logoColor=black)](./frontend/components)
+[![Styling](https://img.shields.io/badge/Styling-Custom_CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](./frontend/css)
+[![Database](https://img.shields.io/badge/Database-SQLAlchemy_2.0-D71F00?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlalchemy.org/)
+[![Telemetry](https://img.shields.io/badge/Telemetry-GTFS--Realtime-F58220?style=for-the-badge&logo=google-maps&logoColor=white)](https://gtfs.org/realtime/)
+[![Deployment](https://img.shields.io/badge/Deployment-Vercel_Edge-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://wcc-tawny.vercel.app)
+[![Architecture](https://img.shields.io/badge/Architecture-Decoupled_1--2_Files-8B5CF6?style=for-the-badge&logo=blueprint&logoColor=white)](./frontend/components)
+
+<br/>
+
+[🌐 **Live Landing Page**](https://wcc-tawny.vercel.app) • [🛰️ **Surveillance Workspace**](https://wcc-tawny.vercel.app/workspace) • [📖 **Interactive API Docs**](https://wcc-tawny.vercel.app/docs) • [📁 **Frontend Components**](./frontend/components)
+
+</div>
+
+---
+
+## 🔗 Live Deployments & Endpoints
+
+| Environment | Service | Live URL | Status |
+|---|---|---|---|
+| **Production** | 🌐 Public Landing Page | [https://wcc-tawny.vercel.app](https://wcc-tawny.vercel.app) | ![Active](https://img.shields.io/badge/ONLINE-brightgreen?style=flat-square) |
+| **Operations** | 🛰️ Surveillance Workspace | [https://wcc-tawny.vercel.app/workspace](https://wcc-tawny.vercel.app/workspace) | ![Active](https://img.shields.io/badge/ONLINE-brightgreen?style=flat-square) |
+| **API Reference** | 📑 Interactive Swagger UI | [https://wcc-tawny.vercel.app/docs](https://wcc-tawny.vercel.app/docs) | ![Active](https://img.shields.io/badge/ONLINE-brightgreen?style=flat-square) |
+| **API Health** | 🩺 Telemetry & DB Health | [https://wcc-tawny.vercel.app/api/v1/health](https://wcc-tawny.vercel.app/api/v1/health) | ![Active](https://img.shields.io/badge/200_OK-brightgreen?style=flat-square) |
+| **Ingestion Engine**| ⚡ Live / Replay Cycle Trigger | `POST /api/v1/ingestion/run` | ![Active](https://img.shields.io/badge/READY-brightgreen?style=flat-square) |
 
 ---
 
@@ -41,17 +72,17 @@ DETECT ──> REMEMBER ──> CONNECT ──> FORECAST ──> REPLAY ──> 
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack & Engineering Matrix
 
-| Layer | Technologies |
-|---|---|
-| **Backend Engine** | Python 3.11+, FastAPI, Uvicorn, Pydantic v2 |
-| **Data & ORM** | SQLAlchemy 2.0, Alembic migrations, SQLite / PostgreSQL |
-| **Telemetry Ingestion** | GTFS-RT (VehiclePositions, TripUpdates), Feed Normalizer |
-| **Intelligence Services** | Pattern Detector, Chain Correlator, Forecast Engine, Sandbox Simulator |
-| **Frontend Architecture** | Pure Modular Architecture (1–2 files per component), Vanilla ES6+, CSS3 |
-| **Motion & Graphics** | Custom Inline SVG Data Visualizations, Lenis Smooth Scroll, GSAP |
-| **Deployment** | Vercel Serverless Function (`@vercel/python`) + Static Asset Edge CDN |
+| Layer | Badges & Technology | Purpose & Implementation |
+|---|---|---|
+| **Backend Core** | [![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com) [![Python](https://img.shields.io/badge/Python_3.12-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org) [![Uvicorn](https://img.shields.io/badge/Uvicorn-2C3E50?style=flat-square&logo=gunicorn&logoColor=white)](https://www.uvicorn.org/) | High-performance asynchronous REST API, route handlers, dependency injection |
+| **Data & ORM** | [![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy_2.0-D71F00?style=flat-square&logo=python&logoColor=white)](https://www.sqlalchemy.org/) [![Alembic](https://img.shields.io/badge/Alembic-000000?style=flat-square)](https://alembic.sqlalchemy.org/) [![SQLite](https://img.shields.io/badge/SQLite_3-003B57?style=flat-square&logo=sqlite&logoColor=white)](https://sqlite.org) | Declarative relational schema, pool pre-ping, auto-migrations, serverless `/tmp` fallback |
+| **Telemetry Ingestion** | [![GTFS](https://img.shields.io/badge/GTFS--Realtime-F58220?style=flat-square&logo=transit&logoColor=white)](https://gtfs.org/realtime/) [![Protobuf](https://img.shields.io/badge/Protocol_Buffers-4285F4?style=flat-square&logo=google&logoColor=white)](https://protobuf.dev/) | Live VehiclePositions & TripUpdates parsing, noise filtering, timestamp normalization |
+| **Intelligence Services** | [![Engine](https://img.shields.io/badge/Pattern_Detector-8B5CF6?style=flat-square)](./backend/app/services/patterns) [![Chains](https://img.shields.io/badge/Chain_Detector-6366F1?style=flat-square)](./backend/app/services/chains) [![Forecast](https://img.shields.io/badge/Forecast_Engine-EC4899?style=flat-square)](./backend/app/services/forecast) | Deviation-escalation-recovery sequence detection, multi-hop temporal dominoes, risk scoring |
+| **Frontend Architecture** | [![Modular JS](https://img.shields.io/badge/Vanilla_ES6+_Modules-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](./frontend/components) [![Architecture](https://img.shields.io/badge/1--2_Files_Per_Folder-10B981?style=flat-square)](./frontend/components) | Decoupled component architecture: zero giant monolithic script files, instant fault isolation |
+| **Styling & Motion** | [![CSS3](https://img.shields.io/badge/Pure_CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](./frontend/css) [![Lenis](https://img.shields.io/badge/Lenis_Scroll-000000?style=flat-square)](./frontend/assets) [![SVG](https://img.shields.io/badge/Custom_SVG_Charts-FF9800?style=flat-square)](./frontend/components/charts) | Bespoke typography, parallax network canvas, inline progression curves, zero UI frameworks |
+| **Deployment & Edge** | [![Vercel](https://img.shields.io/badge/Vercel_Serverless-000000?style=flat-square&logo=vercel&logoColor=white)](https://vercel.com) [![Edge CDN](https://img.shields.io/badge/Edge_CDN-000000?style=flat-square&logo=fastly&logoColor=white)](https://vercel.com) | Serverless Python backend function (`api/index.py`) + edge-cached static distribution |
 
 ---
 
@@ -168,6 +199,8 @@ The project includes built-in Vercel configuration (`vercel.json` + `api/index.p
 npm i -g vercel
 vercel --prod
 ```
+
+**Live Production Link:** [https://wcc-tawny.vercel.app](https://wcc-tawny.vercel.app)
 
 ---
 
