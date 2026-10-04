@@ -1,0 +1,21 @@
+# Stage status (final)
+- STAGE 0: GREEN — audit done, 22/22 reproduced at start.
+- STAGE 1: YELLOW — app-side checks GREEN (constraints tested, PG-dialect migration
+  SQL valid); sandbox Postgres backends crash on connect (env issue, logs kept).
+- STAGE 2: GREEN — MBTA keyless feeds fetched+parsed (VP 41, TU 366, Alerts 95).
+- STAGE 3: GREEN — 418 real rows persisted, rerun dedupes, 0 errors.
+- STAGE 4: GREEN — 0 false positives on live on-time data; near-miss via labelled replay.
+- STAGE 5: GREEN — full chain to recommendation with evidence IDs.
+- STAGE 6: GREEN — adversarial agent tests (hallucination/injection/outage) pass; LLM-off path works.
+- STAGE 7: GREEN — handoff honesty enforced; 4 verification outcomes reachable.
+- STAGE 8: GREEN — frontend spec/plan/tasks/verification written.
+- STAGE 9: GREEN — static frontend (7 slices; map deferred per ADR-006).
+- STAGE 10: GREEN — served by FastAPI; detail chain endpoint; integration tests.
+- STAGE 11: GREEN — e2e doc with real IDs.
+- STAGE 12: GREEN — labels/buttons/focus/ARIA-live/responsive/contrast in place.
+- STAGE 13: GREEN — audit written (rate-limit limitation noted).
+- STAGE 14: GREEN — deploy docs written; not yet deployed (owner action).
+- STAGE 15: GREEN — TestClient smoke (health→ingest→detail) via test suite.
+- STAGE 16: GREEN — demo script written, replay-safe.
+- STAGE 17: GREEN — per-category audit: 16 PASS, 1 PARTIAL (DB/sandbox), 0 FAIL vs plan.
+- STAGE 18: GREEN — docs/final/* + README updated.

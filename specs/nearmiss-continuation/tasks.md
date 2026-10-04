@@ -1,0 +1,20 @@
+# Continuation tasks
+- [x] STAGE 0 audit (22/22 confirmed, env inventoried)
+- [ ] STAGE 1 postgres validation
+- [ ] STAGE 2 real feed fetch+parse
+- [ ] STAGE 3 real ingestion persist+idempotency
+- [ ] STAGE 4 near-miss on real/replay data
+- [ ] STAGE 5 pattern→investigation→agent→recommendation
+- [ ] STAGE 6 agent adversarial hardening
+- [ ] STAGE 7 intervention+verification hardening
+- [ ] STAGE 8 frontend spec
+- [ ] STAGE 9 frontend implementation
+- [ ] STAGE 10 integration
+- [ ] STAGE 11 e2e validation
+- [ ] STAGE 12 UX/a11y
+- [ ] STAGE 13 security audit
+- [ ] STAGE 14 deployment docs
+- [ ] STAGE 15 smoke test
+- [ ] STAGE 16 demo script
+- [ ] STAGE 17 final audit
+- [ ] STAGE 18 docs+handoff

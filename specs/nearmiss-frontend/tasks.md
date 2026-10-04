@@ -1,0 +1,11 @@
+# Frontend tasks
+- [x] FS1 app shell + status + mode badge
+- [x] FS2 transit state (routes/vehicles/events counts)
+- [x] FS3 near-miss list + filters
+- [x] FS4 near-miss detail + timeline
+- [x] FS5 investigation + typed claims
+- [x] FS6 recommendation + intervention
+- [x] FS7 verification before/after
+- [x] FS8 map — DEFERRED (documented; table timeline suffices)
+- [x] error/empty/stale/feed-down states
+- [x] responsive + keyboard + contrast pass

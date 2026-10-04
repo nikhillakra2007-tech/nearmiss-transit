@@ -1,0 +1,11 @@
+# Domino tasks
+- [x] audit causal_edges (investigation-scoped; reuse vocabulary only)
+- [x] spec written
+- [x] services/chains: detector + strength + evidence mapping
+- [x] chain agent bundle + causal-language ban validation
+- [x] API: GET chains + POST investigate; config knobs
+- [x] tests: unrelated/order/dup/insufficient/serialization/malformed/agent/injection/circular/empty/single/multi
+- [x] seed_demo: Route17 lagged replay windows + idempotent skip
+- [x] frontend OPERATIONAL CHAIN + why + investigate + rec
+- [x] docs/features/operational-domino.md + demo/demo-script + frontend-completion touch
+- [x] full suite + compileall + chain demo validation

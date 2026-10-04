@@ -1,0 +1,40 @@
+[project]
+name = "nearmiss-transit"
+version = "0.1.0"
+description = "NearMiss Transit — operational near-miss detection agent for public transit (backend foundation)"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115",
+  "uvicorn[standard]>=0.30",
+  "pydantic>=2.7",
+  "pydantic-settings>=2.3",
+  "sqlalchemy>=2.0",
+  "alembic>=1.13",
+  "asyncpg>=0.29",
+  "psycopg[binary]>=3.1",
+  "aiosqlite>=0.20",
+  "httpx>=0.27",
+  "gtfs-realtime-bindings>=1.0",
+  "protobuf>=5.0",
+  "python-dateutil>=2.9",
+  "pytz>=2024.1",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8", "pytest-asyncio>=0.23", "httpx>=0.27"]
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
