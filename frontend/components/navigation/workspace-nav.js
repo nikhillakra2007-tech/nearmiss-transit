@@ -35,6 +35,11 @@ function switchSection(targetKey, updateHistory = true) {
   const rawKey = String(targetKey).replace(/^#/, "").toLowerCase();
   const canonical = SECTION_ALIASES[rawKey] || "nearmisses";
 
+  // Enforce document-level attribute for zero-flash CSS isolation
+  try {
+    document.documentElement.setAttribute("data-active-section", canonical);
+  } catch (_) {}
+
   const allSections = document.querySelectorAll("main > section");
   const navLinks = document.querySelectorAll(".pagenav a");
 
@@ -46,7 +51,8 @@ function switchSection(targetKey, updateHistory = true) {
 
     if (isTarget) {
       sec.removeAttribute("hidden");
-      sec.style.display = "";
+      sec.classList.add("active");
+      sec.style.display = "block";
       activeSectionFound = true;
       const heading = sec.querySelector("h2");
       if (heading) {
@@ -55,6 +61,7 @@ function switchSection(targetKey, updateHistory = true) {
       }
     } else {
       sec.setAttribute("hidden", "");
+      sec.classList.remove("active");
       sec.style.display = "none";
     }
   });
@@ -66,6 +73,7 @@ function switchSection(targetKey, updateHistory = true) {
 
     link.setAttribute("aria-selected", isSelected ? "true" : "false");
     link.classList.toggle("active", isSelected);
+    link.tabIndex = isSelected ? 0 : -1;
   });
 
   window.scrollTo({ top: 0, behavior: "instant" });
@@ -84,12 +92,25 @@ function initWorkspaceNav() {
   const navLinks = document.querySelectorAll(".pagenav a");
   if (!navLinks.length) return;
 
-  navLinks.forEach((link) => {
+  navLinks.forEach((link, idx) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
       const href = link.getAttribute("href") || "";
       const target = href.replace(/^#/, "");
       switchSection(target, true);
+    });
+
+    link.addEventListener("keydown", (e) => {
+      let nextIdx;
+      if (e.key === "ArrowRight") nextIdx = (idx + 1) % navLinks.length;
+      if (e.key === "ArrowLeft") nextIdx = (idx + navLinks.length - 1) % navLinks.length;
+      if (e.key === "Home") nextIdx = 0;
+      if (e.key === "End") nextIdx = navLinks.length - 1;
+      if (nextIdx !== undefined) {
+        e.preventDefault();
+        navLinks[nextIdx].click();
+        navLinks[nextIdx].focus();
+      }
     });
   });
 

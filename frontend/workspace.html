@@ -4,6 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NearMiss Transit — operational near-miss agent</title>
+<script>
+  (function(){
+    try {
+      var h = (window.location.hash || "").replace(/^#/, "").toLowerCase();
+      var m = {
+        "nearmisses": "nearmisses", "h-nearmisses": "nearmisses", "active-nearmisses": "nearmisses",
+        "delays": "delays", "ops": "delays", "h-ops": "delays", "operations": "delays", "time-delays": "delays", "timedelay": "delays",
+        "patterns": "patterns", "h-patterns": "patterns", "recurring": "patterns",
+        "detail": "detail", "h-detail": "detail", "investigation": "detail",
+        "forecast": "forecast", "h-forecast": "forecast", "emerging": "forecast", "overview": "forecast",
+        "resilience": "resilience", "h-resilience": "resilience"
+      };
+      var target = m[h] || "nearmisses";
+      document.documentElement.setAttribute("data-active-section", target);
+    } catch(e) {}
+  })();
+</script>
 <link rel="stylesheet" href="/assets/workspace-base.css">
 <link rel="stylesheet" href="/assets/workspace.css"></head>
 <body><div class="workspace-home"><span>THE OPERATIONAL WORKSPACE</span><a href="/">↖ Back to NearMiss home</a></div>
@@ -34,7 +51,7 @@
 </nav>
 <p class="story" aria-label="How to read this dashboard">DETECT → REMEMBER → CONNECT → FORECAST → EARLY-WARNING REPLAY → SIMULATE → RECOMMEND → VERIFY</p>
 <main id="main">
-  <section id="section-nearmisses" data-section="nearmisses" aria-labelledby="h-nearmisses">
+  <section id="section-nearmisses" data-section="nearmisses" aria-labelledby="h-nearmisses" class="active">
     <h2 id="h-nearmisses" tabindex="-1">Active near-misses</h2>
     <p class="fineprint">Live-detected transit service deviations, peak escalations, and successful recoveries across monitored corridors.</p>
     <div id="nearmisses" class="cards"><p class="empty">Loading near-misses…</p></div>
